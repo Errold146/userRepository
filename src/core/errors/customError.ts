@@ -23,7 +23,7 @@ export class CustomError extends Error {
         return new CustomError( 404, message )
     }
     
-    static internalServer( message: string ) {
+    static internalServer( message: string = 'Internal Server Error' ) {
         return new CustomError( 500, message )
     }
 }

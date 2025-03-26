@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 import { CustomError, LoginUserDto, RegisterUserDto } from "../../core";
-import type { AuthService } from "../services/authService";
+import type { AuthService } from "../services";
 
 export class AuthController {
 
-    //! Dependency Injection
+    // Dependency Injection
     constructor(
         public readonly authService: AuthService
     ){}
@@ -40,6 +40,9 @@ export class AuthController {
     
     validateEamil = ( req: Request, res: Response ) => {
 
-        res.json('Validate Email')
+        const { token } = req.params
+        this.authService.validateEmail( token )
+            .then(() => res.json( 'Email Validated, thank you' ))
+            .catch( error => this.handleError( error, res ))
     }
 }

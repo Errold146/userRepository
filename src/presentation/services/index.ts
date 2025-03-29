@@ -1,3 +1,5 @@
 export * from './authService'
 export * from './emailService'
 export * from './categoryService'
+export * from './productService'
+export * from './uploadService'
